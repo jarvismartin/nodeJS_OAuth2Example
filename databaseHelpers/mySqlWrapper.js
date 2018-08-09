@@ -13,14 +13,14 @@ let connection = null
  * Create the connection to the db
  */
 function initConnection() {
-
   //set the global connection object
    connection = mySql.createConnection({
-
     host: 'localhost',
+    port: '3306',
     user: 'root',
-    password: 'databasePassword',
-    database: 'oAuth2Test'
+    password: 'test123',
+    database: 'alkemist',
+    debug: true
   })
 }
 

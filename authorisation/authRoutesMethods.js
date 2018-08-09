@@ -11,13 +11,13 @@ module.exports = injectedUserDBHelper => {
 }
 
 /* handles the api call to register the user and insert them into the users table.
-  The req body should contain a username and password. */
+  The req body should contain a email and password. */
 function registerUser(req, res){
 
     console.log(`authRoutesMethods: registerUser: req.body is:`, req.body);
 
     //query db to see if the user exists already
-    userDBHelper.doesUserExist(req.body.username, (sqlError, doesUserExist) => {
+    userDBHelper.doesUserExist(req.body.email, (sqlError, doesUserExist) => {
 
       //check if the user exists
       if (sqlError !== null || doesUserExist){
@@ -34,7 +34,7 @@ function registerUser(req, res){
       }
 
       //register the user in the db
-      userDBHelper.registerUserInDB(req.body.username, req.body.password, dataResponseObject => {
+      userDBHelper.registerUserInDB(req.body.email, req.body.password, req.body.firstname, req.body.lastname, req.body.role, dataResponseObject => {
 
         //create message for the api response
         const message =  dataResponseObject.error === null  ? "Registration was successful" : "Failed to register user"

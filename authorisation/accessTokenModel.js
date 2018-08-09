@@ -58,16 +58,16 @@ function grantTypeAllowed(clientID, grantType, callback) {
 }
 
 
-/* The method attempts to find a user with the spcecified username and password. The callback takes 2 parameters.
+/* The method attempts to find a user with the spcecified email and password. The callback takes 2 parameters.
    This first parameter is an error of type truthy, and the second is a user object. You can decide the structure of
    the user object as you will be the one accessing the data in the user object in the saveAccessToken() method. The library
    doesn't access the user object it just supplies it to the saveAccessToken() method */
-function getUser(username, password, callback){
+function getUser(email, password, callback){
 
-  console.log('getUser() called and username is: ', username, ' and password is: ', password, ' and callback is: ', callback, ' and is userDBHelper null is: ', userDBHelper);
+  console.log('getUser() called and email is: ', email, ' and password is: ', password, ' and callback is: ', callback, ' and is userDBHelper null is: ', userDBHelper);
 
   //try and get the user using the user's credentials
-  userDBHelper.getUserFromCrentials(username, password, callback)
+  userDBHelper.getUserFromCrentials(email, password, callback)
 }
 
 /* saves the accessToken along with the userID retrieved the specified user */
